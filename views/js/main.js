@@ -450,10 +450,12 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   var allPizzas = document.querySelectorAll(".randomPizzaContainer");
+  // ALL pizzas should be the same size and change to the same size,
+  // So we only need to calculate this based on the FIRST pizza!
+  var dx = determineDx(allPizzas[0], size);
+  var newwidth = (allPizzas[0].offsetWidth + dx) + 'px';
   function changePizzaSizes(size) {
     for (var i = 0; i < allPizzas.length; i++) {
-      var dx = determineDx(allPizzas[i], size);
-      var newwidth = (allPizzas[i].offsetWidth + dx) + 'px';
       allPizzas[i].style.width = newwidth;
     }
   }
